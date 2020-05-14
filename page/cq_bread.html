@@ -1,0 +1,144 @@
+<!doctype html> 
+<html> 
+	<head> 
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>크루세이더 빵계산기</title> 
+		<link rel="stylesheet" href="../css/cq_common.css" />
+		<script src="../script/jquery-2.1.1.min.js"></script>
+		<script src="../script/default.js"></script>
+	</head> 
+	<body>
+		<section>
+			<h1>데이터 입력</h1>
+			<article>
+				<div class="form_grp">
+					<h2><label for="cur_star">현재 랭크</label></h2>
+					<select name="" id="cur_star">
+						<option value="600">☆☆</option>
+						<option value="1300">☆☆☆</option>
+						<option value="1900">☆☆☆☆</option>
+						<option value="3200">☆☆☆☆☆</option>
+						<option value="4900">☆☆☆☆☆☆</option>
+					</select>
+				</div>
+				<div class="form_grp">
+					<h2><label for="cur_enchant">훈련 단계</label></h2>
+					<select name="" id="cur_enchant">
+						<option value="0">+0</option>
+						<option value="100">+1</option>
+						<option value="800">+2</option>
+						<option value="2900">+3</option>
+						<option value="7900">+4</option>
+					</select>
+				</div>
+				<div class="form_grp">
+					<h2><label for="pur_enchant">목표 훈련 단계</label></h2>
+					<select name="" id="pur_enchant">
+						<option value="100">+1</option>
+						<option value="800">+2</option>
+						<option value="2900">+3</option>
+						<option value="7900">+4</option>
+						<option value="18500">+5</option>
+					</select>
+				</div>
+				<div class="form_grp">
+					<h2><label for="cur_exp">현재 경험치</label></h2>
+					<input type="text" id="cur_exp" value="0"> / 
+					<span class="max_exp" >100</span>
+				</div>
+				<div class="form_grp">
+					<h2>예상 경험치</h2>
+					<span class="cast_exp" value="">0</span>
+				</div>
+				<div class="form_grp">
+					<h2>예상 비용</h2>
+					<span class="cast_gold" value="">0</span>
+				</div>
+				<div class="form_grp">
+					<h2>대성공 확률</h2>
+					<span class="bonus_pnt">0</span>%
+				</div>
+				<div class="form_grp">
+					<h2>승급명예</h2>
+					<span class="">1-50, 2-200, 3-460, 4-920, 5-1680</span>
+				</div>
+				<div class="form_grp">
+					<h2><label for="ancient_key">고던 키 회복시간</label></h2>
+					<select name="" id="ancient_key">
+						<option disabled selected>갯수</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+					<span class="ancient_key_time">00:00</span>분
+				</div>
+				<section class="wrap_preview">
+					<h1>미리보기</h1>
+					<article>
+						<div class="max_pnt">
+							<div class="cur_pnt"></div>
+							<div class="bon_pnt"></div>
+						</div>
+					</article>
+				</section>
+				<section>
+					<h1>결과보기</h1><label for="chk_bread_count">갯수제한 해제</label><input type="checkbox" id="chk_bread_count">
+					<span>*하단 빵 선택시 삭제 가능</span>
+					<article class="wrap_result"></article>
+				</section>
+				<button type="button" class="btn_primary" id="btn_auto">자동계산</button>
+				<button type="button" class="btn_primary" id="btn_reset">초기화</button>
+				<div class="wrap_sel_bread">
+					<h1>빵선택</h1><button type="button" class="fold">숨김/펼침</button>
+					<ul>
+						<!-- 6성 -->
+						<li>
+							<button type="button"><span class="rank">6☆</span><span class="bread_tit">마카롱</span><span class="bread_value">600</span><span class="bonus">0</span></button>
+							<button type="button"><span class="rank">6☆</span><span class="bread_tit">햄버거</span><span class="bread_value">480</span><span class="bonus">20</span></button>
+							<button type="button"><span class="rank">6☆</span><span class="bread_tit">스페셜 도넛</span><span class="bread_value">180</span><span class="bonus">70</span></button>
+						</li>
+						<!-- 5성 -->
+						<li>
+							<button type="button"><span class="rank">5☆</span><span class="bread_tit">딸기파이</span><span class="bread_value">330</span><span class="bonus">0</span></button>
+							<button type="button"><span class="rank">5☆</span><span class="bread_tit">피자</span><span class="bread_value">264</span><span class="bonus">20</span></button>
+							<button type="button"><span class="rank">5☆</span><span class="bread_tit">딸기 도넛</span><span class="bread_value">99</span><span class="bonus">70</span></button>
+						</li>
+						<!-- 4성 -->
+						<li>
+							<button type="button"><span class="rank">4☆</span><span class="bread_tit">생크림빵</span><span class="bread_value">180</span><span class="bonus">0</span></button>
+							<button type="button"><span class="rank">4☆</span><span class="bread_tit">샌드위치</span><span class="bread_value">144</span><span class="bonus">20</span></button>
+							<button type="button"><span class="rank">4☆</span><span class="bread_tit">찹쌀 도넛</span><span class="bread_value">54</span><span class="bonus">70</span></button>
+							<button type="button"><span class="rank">4☆</span><span class="bread_tit">크리스마스 케익</span><span class="bread_value">150</span><span class="bonus">25</span></button>
+						</li>
+						<!-- 3성 -->
+						<li>
+							<button type="button"><span class="rank">3☆</span><span class="bread_tit">크로와상</span><span class="bread_value">100</span><span class="bonus">0</span></button>
+							<button type="button"><span class="rank">3☆</span><span class="bread_tit">스낵랩</span><span class="bread_value">80</span><span class="bonus">20</span></button>
+							<button type="button"><span class="rank">3☆</span><span class="bread_tit">더블초코 도넛</span><span class="bread_value">30</span><span class="bonus">70</span></button>
+						</li>
+						<!-- 2성 -->
+						<li>
+							<button type="button"><span class="rank">2☆</span><span class="bread_tit">식빵</span><span class="bread_value">50</span><span class="bonus">0</span></button>
+							<button type="button"><span class="rank">2☆</span><span class="bread_tit">핫도그</span><span class="bread_value">40</span><span class="bonus">20</span></button>
+							<button type="button"><span class="rank">2☆</span><span class="bread_tit">초코 도넛</span><span class="bread_value">15</span><span class="bonus">70</span></button>
+						</li>
+						<!-- 1성 -->
+						<li>
+							<button type="button"><span class="rank">1☆</span><span class="bread_tit">모닝빵</span><span class="bread_value">30</span><span class="bonus">0</span></button>
+							<button type="button"><span class="rank">1☆</span><span class="bread_tit">소세지빵</span><span class="bread_value">24</span><span class="bonus">20</span></button>
+							<button type="button"><span class="rank">1☆</span><span class="bread_tit">기본 도넛</span><span class="bread_value">9</span><span class="bonus">70</span></button>
+						</li>
+					</ul>
+				</div>
+			</article>
+		</section>
+	</body> 
+</html>
