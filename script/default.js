@@ -28,7 +28,7 @@ $(function(){
 
 	//인풋박스 이벤트 
 	$('#cur_exp').on('change', function(){
-		//집접 값 입력시 선택한 빵 제거(빵이 없을때는 경험치만 갱신)
+		//직접 값 입력시 선택한 빵 제거(빵이 없을때는 경험치만 갱신)
 		if( $('.wrap_result').children().length == 0){
 			console.log('no bread');
 			org_exp = parseInt( $('#cur_exp').val() ); //입력된 경험치 
@@ -226,7 +226,7 @@ $(function(){
 	}
 	//init
 	$('.wrap_sel_bread .bonus').append('<span>%</span>'); // %표시 추가
-	//배열 구분하기 이해 빵 훈련량에 숨김처리된 ','를 추가
+	//배열 구분하기 위해 빵 훈련량에 숨김처리된 ','를 추가
 	$('.wrap_sel_bread li button').find('.bread_value').each(function(){
 		$(this).append('<span style="display:none">,</span>');
 	})
